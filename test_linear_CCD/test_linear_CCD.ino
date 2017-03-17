@@ -9,6 +9,10 @@
 //Connect pins as described below. Note the variable assignment value is the pin on the Arduino, the comment next to the variable has the appropriate pin on the sensor
 //Ensure the VDD and GND pins are connected to the Arduino at the 5V and GND pins respectively
 
+//Possible Optimizations
+//Replace digitalWrite with direct register version
+
+#define SERIAL_BAUD_RATE 2000000
 
 // Define various ADC prescaler:
 const unsigned char PS_32 = (1 << ADPS2) | (1 << ADPS0);
@@ -58,14 +62,16 @@ void setup()
       ClockPulse(); 
   }
 
-  Serial.begin(115200);
+  Serial.begin(SERIAL_BAUD_RATE);
+
+  while(!Serial){
+    }
+  
 }
 
 void loop() 
 {  
 
-          
-      
       //arrays where the readout of the photodiodes is stored, as 16-bit integers
       int S1Data[256];
       int S2Data[256];
@@ -88,13 +94,12 @@ void loop()
           S4Data[i] = analogRead(S4APin);
           ClockPulse(); 
       }
-
+  
       // Next, stop the ongoing integration of light quanta from each photodiode by clocking in a
       // SI pulse:
       digitalWrite(SIpin, HIGH);
       ClockPulse(); 
       digitalWrite(SIpin, LOW);
-      delay(1000);
       // Next, send the measurement stored in the array to host computer using serial (rs-232).
       // communication. This takes ~80 ms during whick time no clock pulses reaches the sensor. 
       // No integration is taking place during this time from the photodiodes as the integration 
@@ -105,19 +110,19 @@ void loop()
       {
           Serial.print(S1Data[i]); Serial.print("|");
       }
-      Serial.print(";");
+      Serial.println(";");
       Serial.print("S2:");
       for(int i = 0; i < 256; i++)
       {
           Serial.print(S2Data[i]); Serial.print("|");
       }
-      Serial.print(";");
+      Serial.println(";");
             Serial.print("S3:");
       for(int i = 0; i < 256; i++)
       {
           Serial.print(S3Data[i]); Serial.print("|");
       }
-      Serial.print(";");
+      Serial.println(";");
             Serial.print("S4:");
       for(int i = 0; i < 256; i++)
       {
