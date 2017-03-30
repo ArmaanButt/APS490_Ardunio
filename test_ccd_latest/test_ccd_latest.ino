@@ -9,11 +9,27 @@ uint8_t S1APin = 0;
 uint8_t S2APin = 1;
 uint8_t S3APin = 2;
 uint8_t S4APin = 3;
+uint8_t S5APin = 4;
+uint8_t S6APin = 5;
+uint8_t S7APin = 6;
+uint8_t S8APin = 7;
+uint8_t S9APin = 8;
+uint8_t S10APin = 9;
+uint8_t S11APin = 10;
+uint8_t S12APin = 11;
 
 int S1Data[256];
 int S2Data[256];
-//int S3Data[256];
-//int S4Data[256];
+int S3Data[256];
+int S4Data[256];
+int S5Data[256];
+int S6Data[256];
+int S7Data[256];
+int S8Data[256];
+int S9Data[256];
+int S10Data[256];
+int S11Data[256];
+int S12Data[256];
 
 void setup() {
   // put your setup code here, to run once:
@@ -56,6 +72,9 @@ void setup() {
 }
 
 void loop() {
+  int lastVal;
+  int paddingOne = 64;
+  int paddingTwo = 64;
   // put your main code here, to run repeatedly:
   //arrays where the readout of the photodiodes is stored, as 16-bit integers
     
@@ -72,8 +91,17 @@ void loop() {
       delayMicroseconds(20);// <-- We add a delay to stabilize the AO output from the sensor
       S1Data[i] = analogRead(S1APin);
       S2Data[i] = analogRead(S2APin);
-//      S3Data[i] = analogRead(S3APin);
-//      S4Data[i] = analogRead(S4APin);
+      S3Data[i] = analogRead(S3APin);
+      S4Data[i] = analogRead(S4APin);
+      S5Data[i] = analogRead(S5APin);
+      S6Data[i] = analogRead(S6APin);
+      S7Data[i] = analogRead(S7APin);
+      S8Data[i] = analogRead(S8APin);
+      S9Data[i] = analogRead(S9APin);
+      S10Data[i] = analogRead(S10APin);
+      S11Data[i] = analogRead(S11APin);
+      S12Data[i] = analogRead(S12APin);
+      
       ClockPulse(); 
   }
 
@@ -85,12 +113,22 @@ void loop() {
   
   
   Serial.print("X:");
+
   for(int i = 0; i < 256; i++)
   {
 //      Serial.print("a");
       Serial.print(S1Data[i]);
       Serial.print("|");
   }
+//  lastVal = S1Data[250];
+//  for(int i = 0; i < paddingOne; i++)
+//  {
+////      Serial.print("a");
+//      Serial.print(lastVal);
+//      Serial.print("|");
+//  }
+
+
   
   for(int i = 0; i < 256; i++)
   {
@@ -98,20 +136,165 @@ void loop() {
       Serial.print(S2Data[i]);
       Serial.print("|");
   }
+//  lastVal = S2Data[250];
+//  for(int i = 0; i < paddingOne; i++)
+//  {
+////      Serial.print("a");
+//      Serial.print(lastVal);
+//      Serial.print("|");
+//  }
+
+
+
+  for(int i = 0; i < 256; i++)
+  {
+//      Serial.print("c");
+      Serial.print(S3Data[i]);
+      Serial.print("|");
+  }
+//  lastVal = S3Data[250];
+//  for(int i = 0; i < paddingOne; i++)
+//  {
+////      Serial.print("a");
+//      Serial.print(lastVal);
+//      Serial.print("|");
+//  }
+
+
+
+  for(int i = 0; i < 256; i++)
+  {
+//      Serial.print("d");
+      Serial.print(S4Data[i]);
+      Serial.print("|");
+  }
+//  lastVal = S4Data[250];
+//  for(int i = 0; i < paddingTwo; i++)
+//  {
+////      Serial.print("a");
+//      Serial.print(lastVal);
+//      Serial.print("|");
+//  }
+
+  
+
+  for(int i = 0; i < 256; i++)
+  {
+//      Serial.print("c");
+      Serial.print(S5Data[i]);
+      Serial.print("|");
+  }
+//  lastVal = S5Data[250];
+//  for(int i = 0; i < paddingOne; i++)
+//  {
+////      Serial.print("a");
+//      Serial.print(lastVal);
+//      Serial.print("|");
+//  }
+  
+
+
+  for(int i = 0; i < 256; i++)
+  {
+//      Serial.print("c");
+      Serial.print(S6Data[i]);
+      Serial.print("|");
+  }
+//  lastVal = S6Data[250];
+//  for(int i = 0; i < paddingOne; i++)
+//  {
+////      Serial.print("a");
+//      Serial.print(lastVal);
+//      Serial.print("|");
+//  }
+
+
+
+  for(int i = 0; i < 256; i++)
+  {
+//      Serial.print("c");
+      Serial.print(S7Data[i]);
+      Serial.print("|");
+  }
+//  lastVal = S7Data[250];
+//  for(int i = 0; i < paddingOne; i++)
+//  {
+////      Serial.print("a");
+//      Serial.print(lastVal);
+//      Serial.print("|");
+//  }
+
+  
+
+  for(int i = 0; i < 256; i++)
+  {
+//      Serial.print("c");
+      Serial.print(S8Data[i]);
+      Serial.print("|");
+  }
+//  lastVal = S8Data[250];
+//  for(int i = 0; i < paddingTwo; i++)
+//  {
+////      Serial.print("a");
+//      Serial.print(lastVal);
+//      Serial.print("|");
+//  }
+
+  
+
+  for(int i = 0; i < 256; i++)
+  {
+//      Serial.print("c");
+      Serial.print(S9Data[i]);
+      Serial.print("|");
+  }
+//  lastVal = S9Data[250];
+//  for(int i = 0; i < paddingOne; i++)
+//  {
+////      Serial.print("a");
+//      Serial.print(lastVal);
+//      Serial.print("|");
+//  }
+
+  
+
+  for(int i = 0; i < 256; i++)
+  {
+//      Serial.print("c");
+      Serial.print(S10Data[i]);
+      Serial.print("|");
+  }
+//  lastVal = S10Data[250];
+//  for(int i = 0; i < paddingOne; i++)
+//  {
+////      Serial.print("a");
+//      Serial.print(lastVal);
+//      Serial.print("|");
+//  }
+
+  
+
+  for(int i = 0; i < 256; i++)
+  {
+//      Serial.print("c");
+      Serial.print(S11Data[i]);
+      Serial.print("|");
+  }
+//  lastVal = S11Data[250];
+//  for(int i = 0; i < paddingOne; i++)
+//  {
+////      Serial.print("a");
+//      Serial.print(lastVal);
+//      Serial.print("|");
+//  }
 
 //  for(int i = 0; i < 256; i++)
 //  {
 ////      Serial.print("c");
-//      Serial.print(S3Data[i]);
+//      Serial.print(S12Data[i]);
 //      Serial.print("|");
 //  }
-//
-//  for(int i = 0; i < 256; i++)
-//  {
-////      Serial.print("d");
-//      Serial.print(S4Data[i]);
-//      Serial.print("|");
-//  }
+  
   Serial.println();
 
 
